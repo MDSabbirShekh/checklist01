@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Import fonts for Modern Minimalist with Depth design */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Modern Minimalist with Depth: Deep charcoal background with emerald and coral accents */
+  --primary: #10b981; /* Emerald green */
+  --primary-foreground: #f5f5f5; /* Off-white */
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #f5f5f5;
+  --chart-1: #10b981;
+  --chart-2: #ff6b35;
+  --chart-3: #1a1a1a;
+  --chart-4: #2d3748;
+  --chart-5: #10b981;
+  --radius: 0.65rem;
+  --background: #1a1a1a; /* Deep charcoal */
+  --foreground: #f5f5f5; /* Off-white */
+  --card: rgba(255, 255, 255, 0.08); /* Frosted glass effect */
+  --card-foreground: #f5f5f5;
+  --popover: rgba(255, 255, 255, 0.08);
+  --popover-foreground: #f5f5f5;
+  --secondary: #ff6b35; /* Coral orange */
+  --secondary-foreground: #f5f5f5;
+  --muted: #2d3748; /* Charcoal gray */
+  --muted-foreground: #a0aec0; /* Light gray */
+  --accent: #10b981; /* Emerald */
+  --accent-foreground: #f5f5f5;
+  --destructive: #ff6b35;
+  --destructive-foreground: #f5f5f5;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #10b981;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #10b981;
+}
+
+.dark {
+  /* Dark mode uses same colors as light mode for consistency */
+  --primary: #10b981;
+  --primary-foreground: #f5f5f5;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #f5f5f5;
+  --background: #1a1a1a;
+  --foreground: #f5f5f5;
+  --card: rgba(255, 255, 255, 0.08);
+  --card-foreground: #f5f5f5;
+  --popover: rgba(255, 255, 255, 0.08);
+  --popover-foreground: #f5f5f5;
+  --secondary: #ff6b35;
+  --secondary-foreground: #f5f5f5;
+  --muted: #2d3748;
+  --muted-foreground: #a0aec0;
+  --accent: #10b981;
+  --accent-foreground: #f5f5f5;
+  --destructive: #ff6b35;
+  --destructive-foreground: #f5f5f5;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #ff6b35;
+  --chart-3: #1a1a1a;
+  --chart-4: #2d3748;
+  --chart-5: #10b981;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #10b981;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #10b981;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Modern Minimalist with Depth: Frosted glass card effect */
+  .glass-card {
+    @apply backdrop-blur-md bg-card border border-border rounded-2xl;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    @apply -translate-y-2;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Typography: Playfair Display for headings */
+  .heading-lg {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    @apply text-4xl md:text-5xl;
+  }
+
+  .heading-md {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    @apply text-2xl md:text-3xl;
+  }
+
+  .heading-sm {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Body text: Inter for readability */
+  .body-lg {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    @apply text-lg;
+  }
+
+  .body-base {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    @apply text-base;
+  }
+
+  .body-sm {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    @apply text-sm;
+  }
+
+  /* Gradient accent for cards */
+  .gradient-accent {
+    background: linear-gradient(135deg, #10b981 0%, rgba(16, 185, 129, 0) 100%);
+  }
+
+  /* Staggered animation for card entrance */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-in {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
